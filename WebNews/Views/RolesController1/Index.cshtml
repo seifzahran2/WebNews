@@ -1,0 +1,26 @@
+﻿@model IEnumerable<IdentityRole>
+@{
+    ViewData["Title"] = "Index";
+}
+<div style="background-color:gray">
+    <partial name="_RoleForm" model="new RoleFormVM()" />
+    <div class="col-10 fa-align-center" style="margin-left: auto; margin-right: auto;width:70%; padding-bottom:2%">
+        <table class="table table-dark table-sm">
+            <thead style="text-align:center">
+                <tr>
+                    <th>ID</th>
+                    <th>Role Name</th>
+                </tr>
+            </thead>
+            <tbody style="text-align:center">
+                @foreach (var Role in Model)
+                {
+                <tr >
+                    <td>@Role.Id[0]@Role.Id[1]@Role.Id[2]@Role.Id[3]@Role.Id[4]</td>
+                    <td>@Role.Name</td>
+                </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

@@ -1,0 +1,12 @@
+﻿@model RoleFormVM
+
+<form style="width: 50%; margin-left: auto; margin-right: auto; padding-top: 2%;margin-top:20%"
+      method="Post" asp-action="Add">
+    <div class="input-group mb-3">
+        <input asp-for="Name" class="form-control" placeholder="Role Name" />
+        <div class="input-group-append">
+            <button type="submit" class="btn btn-primary">Add Role</button>
+        </div>
+    </div>
+    <span asp-validation-for="Name" class="text-white"></span>
+</form>

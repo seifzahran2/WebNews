@@ -1,0 +1,64 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Profile";
+    ViewData["ActivePage"] = ManageNavPages.Index;
+}
+
+
+<partial name="_StatusMessage" model="Model.StatusMessage" />
+<form id="profile-form" method="post" enctype="multipart/form-data" style="border: outset; padding: 15px 30px; margin-left: 10%; margin-right: 10%; margin-bottom: 40px">
+    <div class="row col col-lg-4 " >
+        <div class="col-md-6">
+            <h4>@ViewData["Title"]</h4>
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Input.FirstName"></label>
+                <input style="width:300px" asp-for="Input.FirstName" class="form-control" />
+                <span asp-validation-for="Input.FirstName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Input.LastName"></label>
+                <input style="width:300px" asp-for="Input.LastName" class="form-control" />
+                <span asp-validation-for="Input.LastName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Input.Username"></label>
+                <input style="width:300px" asp-for="Input.Username" class="form-control" />
+                <span asp-validation-for="Input.Username" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Input.PhoneNumber"></label>
+                <input style="width:300px" asp-for="Input.PhoneNumber" class="form-control" />
+                <span asp-validation-for="Input.PhoneNumber" class="text-danger"></span>
+            </div>
+            
+            <div class="input-group">
+                <label class="custom-file-lable" asp-for="Input.ProfilePic"></label>
+                <input accept="image/*" type="file"
+                       style="width:300px" asp-for="Input.ProfilePic"
+                       class="form-control" id="inputGroupFile04"
+                       onchange="document.getElementById('profilepic').src=window.URL.createObjectURL(this.files[0])">
+                <span asp-validation-for="Input.PhoneNumber" class="text-danger"></span>
+            </div>
+            <button style="margin-top:10px" id="update-profile-button" type="submit" class="btn btn-primary">Save</button>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group" style="width: 196px; height: 196px;margin-left:220%">
+                <label asp-for="Input.ProfilePic" class="w-100"></label>
+                @if (Model.Input.ProfilePic != null)
+                {
+                    <img style="width: 290px; height: 260px; object-fit:cover"  id="profilepic" alt="Profile" class="Profile-pic" src="data:image/*;base64,@(Convert.ToBase64String(Model.Input.ProfilePic))" />
+                }
+                else
+                {
+                    <img style="width: 290px; height: 260px; object-fit: cover" 
+                         id="profilepic" alt="Profile" 
+                         class="Profile-pic" src="~/assets/img/slide/14.jpg" />
+                }
+            </div>
+        </div>
+    </div>
+</form>
+
+

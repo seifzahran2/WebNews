@@ -1,0 +1,120 @@
+﻿@using Microsoft.AspNetCore.Identity
+@inject SignInManager<Appuser> SignInManager
+@inject UserManager<Appuser> UserManager
+
+<nav id="navbar" class="navbar order-last order-lg-0 ">
+    <div class="container">
+        @if (SignInManager.IsSignedIn(User))
+        {
+            @if (User.IsInRole(role: "Admin"))
+            {
+                <ul class="mr-auto ">
+                    <li> <a href="/Home/Index" class="logo me-auto"><img src="~/assets/img/logo.png" alt=""></a></li>
+                    <li><a class="nav-link scrollto " href="/Home/Index">Home</a></li>
+                    <li><a class="nav-link scrollto" href="/Home/Message">Messages</a></li>
+                </ul>
+                <div>
+                    <ul class="mr-auto ">
+                        @if (UserManager.GetUserAsync(User).Result.ProfilePic != null)
+                        {
+                            <div class="flex-row-reverse">
+                                <ul>
+                                    <li class="nav-item">
+                                        <a asp-area="Identity" asp-page="/Account/Manage/Index">
+                                            <img style="width:40px;height:40px;object-fit:cover" class="rounded-circle" alt="Profile"
+                                                 src="data:image/*;base64,@(Convert.
+                                     ToBase64String(UserManager.GetUserAsync(User)
+                                     .Result.ProfilePic))" />
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        }
+                        <div class="flex-row-reverse">
+                            <ul>
+                                <li class="nav-item">
+                                    <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">@User.Identity.Name</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="dropdown">
+                            <button style="width:200px" class="btn btn-white dropdown-toggle" type="button" id="about-us" data-bs-toggle="dropdown" aria-expanded="false">
+                            </button>
+                            <ul class="dropdown-menu" aria-labelledby="about-us">
+                                <li>
+                                    <a class="nav-link scrollto" href="/news/Index">News Management</a>
+                                </li>
+                                <li>
+                                    <a class="nav-link scrollto " href="/RolesController1/Index">Manage Roles</a>
+                                </li>
+                                <li>
+                                    <a class="nav-link scrollto " asp-controller="User" asp-action="Index">Manage Users</a>
+                                </li>
+                                <li><a class="nav-link scrollto" href="/Categories/Index">Categories Management</a></li>
+                                @*<a class="nav-link text-dark" asp-area="Identity"
+                                nav-link scrolltoasp-page="/Account/Logout">Logout</a>*@
+                                <li>
+                                    <form class="form-inline" asp-area="Identity" asp-page="/Account/Logout" method="post">
+                                        <button type="submit" style="margin-left:2px" class="scrollto nav-link btn btn-white text-dark">Logout</button>
+                                    </form>
+                                </li>
+                            </ul>
+                        </div>
+                    </ul>
+                </div>
+            }
+            else if (User.IsInRole(role: "User"))
+            {
+                <div>
+                    <ul class="mr-auto ">
+                        <li> <a href="/Home/Index" class="logo me-auto"><img src="~/assets/img/logo.png" alt=""></a></li>
+                        <li><a class="nav-link scrollto " href="/Home/Index">Home</a></li>
+                        <li><a class="nav-link scrollto " href="/Home/Contact">Contact Us</a></li>
+                        <li>
+                            <form class="form-inline" asp-area="Identity" asp-page="/Account/Logout" method="post">
+                                <button type="submit" style="margin-left:2px" class="scrollto nav-link btn btn-white text-dark">Logout</button>
+                            </form>
+                        </li>
+                    </ul>
+                </div>
+                <div>
+                    <ul class="mr-auto ">
+                        @if (UserManager.GetUserAsync(User).Result.ProfilePic != null)
+                        {
+                            <div class="flex-row-reverse">
+                                <ul>
+                                    <li class="nav-item">
+                                        <a asp-area="Identity" asp-page="/Account/Manage/Index">
+                                            <img style="width:40px;height:40px;object-fit:cover" class="rounded-circle" alt="Profile"
+                                                 src="data:image/*;base64,@(Convert.
+                                     ToBase64String(UserManager.GetUserAsync(User)
+                                     .Result.ProfilePic))" />
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        }
+
+                    </ul>
+                </div>
+            }
+
+        }
+        else
+        {
+            <div class="flex-row-reverse">
+                <ul>
+                    <li><a href="/Home/Index" class="logo me-auto"><img src="~/assets/img/logo.png" alt=""></a></li>
+                    <li><a class="nav-link scrollto " href="/Home/Contact">Contact Us</a></li>
+
+                    <li>
+                        <a class="nav-link scrollto " asp-area="Identity" asp-page="/Account/Register">Register</a>
+                    </li>
+                    <li>
+                        <a class="nav-link scrollto " asp-area="Identity" asp-page="/Account/Login">Login</a>
+                    </li>
+                </ul>
+            </div>
+        }
+    </div>
+</nav>

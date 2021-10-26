@@ -1,0 +1,59 @@
+﻿@model WebNews.Models.News
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1 style="text-align:center">Details</h1>
+
+<div class="col-10 fa-align-center" style="margin-left: auto; margin-right: auto;">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.title)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.NewsDate)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Image)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Topic)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.category)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => Model.title)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => Model.NewsDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => Model.Image)
+                </td>
+                <td style="width:250px;">
+                    @Html.DisplayFor(modelItem => Model.Topic)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => Model.category.Name)
+                </td>
+                <td>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="Id" />
+       
+        <a asp-action="Index" class="btn btn-danger">Back to List</a>
+    </form>
+</div>

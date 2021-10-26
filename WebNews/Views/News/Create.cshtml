@@ -1,0 +1,46 @@
+﻿@model WebNews.Models.News
+
+@{
+    ViewData["Title"] = "Create";
+}
+<div style="background-color:gainsboro">
+    <h2 style="text-align: center; padding-top:25px">Create News</h2>
+    <hr />
+    <form asp-action="Create" enctype="multipart/form-data">
+        <div class="row col-lg-6" style="margin-left: auto; margin-right: auto; padding-bottom:30px">
+            <div class="mb-3 row ">
+                <label asp-for="title" class="control-label"></label>
+                <input asp-for="title" class="form-control" required />
+                <span asp-validation-for="title" class="text-danger"></span>
+            </div>
+            <div class="mb-3 row">
+                <label asp-for="NewsDate" class="control-label"></label>
+                <input asp-for="NewsDate" type="datetime-local" class="form-control" required />
+                <span asp-validation-for="NewsDate" class="text-danger"></span>
+            </div>
+            <div class="mb-3 row cutom-file">
+                <label asp-for="Image" class="control-label"></label>
+                <input asp-for="Image" accept="image /*" type="file" class="form-control custom-file-input"/>
+                <span asp-validation-for="Image" class="text-danger"></span>
+            </div>
+            <div class="mb-3 row">
+                <label asp-for="Topic" class="control-label"></label>
+                <textarea asp-for="Topic" class="form-control" required></textarea>
+                <span asp-validation-for="Topic" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3 row">
+                <label class="control-label">Category</label>
+                <select asp-for="categoryId" class="form-control" asp-items="ViewBag.categoryId" required></select>
+                <span asp-validation-for="categoryId" class="text-danger"></span>
+            </div>
+            <div class="form-group ">
+                <input type="submit" value="Create" class="btn btn-primary" />
+                <a asp-action="Index" class="btn btn-danger">Back to List</a>
+            </div>
+
+        </div>
+    </form>
+</div>
+
+

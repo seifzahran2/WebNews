@@ -1,0 +1,37 @@
+﻿@model IEnumerable<UserVM>
+@{
+    ViewData["Title"] = "Index";
+}
+<form method="post">
+    <div class="col-10 fa-align-center" style="margin-left: auto; margin-right: auto;width:70%; padding-bottom:2%">
+        <table class="table table-white table-sm">
+            <thead style="text-align:center">
+                <tr>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>User Name</th>
+                    <th>Email</th>
+                    <th>Roles</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody style="text-align:center">
+                @foreach (var user in Model)
+                {
+                    <tr>
+                        <td>@user.FirstName</td>
+                        <td>@user.LastName</td>
+                        <td>@user.UserName</td>
+                        <td>@user.Email</td>
+                        <td>@string.Join(",", user.Roles.ToList())</td>
+                        <td>
+                            <a asp-controller="User" asp-action="ManageRoles" asp-route-userid="@user.Id" class="btn btn-dark">Manage Roles</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</form>
+
+

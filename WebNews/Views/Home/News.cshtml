@@ -1,0 +1,131 @@
+﻿@model IEnumerable<WebNews.Models.News> 
+
+@{
+    ViewData["Title"] = "news";
+}
+<section id="about" class="about" >
+
+        <div class="row" style="margin-bottom:3%">
+            <div class="col-md-3" style="height:430px;position:fixed;margin-left:2%">
+                <div class="mb-4" style="border:outset; height:50%; ">
+                    <div style="border: outset; height: 22%; background-color: black ">
+                        <h2 class="mt-1" style="color:white;font-weight:bold;margin-left:30%">أخبار مختلفه</h2>
+                    </div>
+                    <div class="mb-4" style="border:outset; height:78%; overflow:auto;">
+                        
+                        <ul class="mt-2 mb-2">
+                            <a style="border: outset;width:100%" class="btn btn-dark" href="/Home/news/1">الرياضة</a>
+                            <br />
+                            <a style="border: outset; width: 100%" class="btn btn-dark" href="/Home/news/2">السياسة</a>
+                            <br />
+                            <a style="border: outset; width: 100%" class="btn btn-dark" href="/Home/news/3">التعليم</a>
+                            <br />
+                            <a style="border: outset; width: 100%" class="btn btn-dark" href="/Home/news/4">الصحة</a>
+                            <br />
+                            <a style="border: outset; width: 100%" class="btn btn-dark" href="/Home/newsall">اخبار متنوعة</a>
+                        </ul>
+                        
+                    </div>
+                </div>
+                <div class="mb-4" style="border:outset; height:60%; ">
+                    <div style="border: outset; height: 20%; background-color: black ">
+                        <h2 class="mt-1" style="color:white;font-weight:bold;margin-left:35%">اعلانات</h2>
+                    </div>
+                    <div class="mb-4" style="border:outset; height:80%">
+                        
+                        <div class="mb-4" style="border:outset; height:80%">
+                            <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel" style="height:200px">
+                                <div class="carousel-inner">
+                                    <div class="carousel-item active">
+                                        <img style="height:200px" src="/assets/img/slide/55.jpg" class="d-block w-100" alt="اعلان">
+
+                                    </div>
+                                    <div class="carousel-item">
+                                        <img style="height: 200px" src="/assets/img/slide/66.jpg" class="d-block w-100" alt="اعلان">
+
+                                    </div>
+                                    <div class="carousel-item">
+                                        <img style="height: 200px" src="/assets/img/slide/77.jpg" class="d-block w-100" alt="اعلان">
+
+                                    </div>
+                                </div>
+                                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+                                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                    <span class="visually-hidden">Previous</span>
+                                </button>
+                                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+                                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                    <span class="visually-hidden">Next</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                </div>
+                <div class="col-md-6" style="margin-left:30%">
+                    <div class="section-title">
+                        <h2>تابع اخبار @ViewData["news"] </h2>
+                    </div>
+                    <div>
+                        @foreach (var item in Model)
+                        {
+
+                            <div class="card col col-sm-3" style="width: 40rem; margin-bottom:5%">
+                                <img style="margin-left: 37%; margin-top: 2%; height: 35%; width: 35%" id="ProfilePicture" src="../../@item.Image" class="img-fluid" alt="">
+                                <div class="card-body">
+                                    <h5 style="text-align:center" class="card-title">@item.title</h5>
+                                    <h8 style="margin-left: 40%;">@item.NewsDate</h8>
+                                    <p class="card-text">
+                                        @item.Topic
+                                    </p>
+                                </div>
+                            </div>
+                            <div></div>
+
+                        }
+                    </div>
+                </div>
+                <div class="col-md-3" style="border: outset; background-color: #ffa500; position: relative; height: 370px; position: fixed; margin-left: 75%;">
+                    <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel" style="height:200px">
+                        <div class="carousel-inner">
+                            <div class="carousel-item active">
+                                <img src="/assets/img/slide/4.jpg" class="d-block w-100" alt="اعلان">
+                                <div style="height: 10%; margin-top: 7%; font-weight: bold">
+                                <h4 style="color: ghostwhite; font-weight: bold">كيف تسوق موقعك من خلال الموشن جرافيك</h4>
+                                </div>
+                                <div style="margin-bottom: 10%">
+                                    <a style="margin-left:40%;" class="btn btn-warning mt-5" href="https://webdesignofegypt.net/blog/%d8%a7%d9%84%d8%aa%d8%ac%d8%a7%d8%b1%d8%a9-%d8%a7%d9%84%d8%a7%d9%84%d9%83%d8%aa%d8%b1%d9%88%d9%86%d9%8a%d8%a9/">اقرأ أكثر ..</a>
+                                </div>
+                            </div>
+                            <div class="carousel-item">
+                                <img src="/assets/img/slide/5.jpg" class="d-block w-100" alt="اعلان">
+                                <div style="height: 10%; margin-top: 7%; font-weight: bold ">
+                                    <h4 style="color: ghostwhite; font-weight: bold">التجارة الالكترونية لغة العصر لجني الارباح</h4>
+                                </div>
+                                <div>
+                                     <a style="margin-left:40%" class="btn btn-warning mt-5" href="https://webdesignofegypt.net/blog/%d9%85%d9%88%d8%b4%d9%86-%d8%ac%d8%b1%d8%a7%d9%81%d9%8a%d9%83-motion-graphic/">اقرأ أكثر ..</a>
+                                </div>
+                                </div>
+                                <div class="carousel-item">
+                                    <img src="/assets/img/slide/6.jpg" class="d-block w-100" alt="اعلان">
+                                    <div style="height: 10%; margin-top: 7%;font-weight:bold">
+                                        <h4 style="color: ghostwhite; font-weight: bold">التجارة الالكترونية لغة العصر لجني الارباح</h4>
+                                    </div>
+                                    <div>
+                                            <a style="margin-left:40%" class="btn btn-warning mt-5" href="https://webdesignofegypt.net/blog/%d9%85%d8%a7-%d9%87%d9%89-%d8%a7%d9%84%d8%ad%d8%b1%d8%a8-%d8%a7%d9%84%d8%a5%d9%84%d9%83%d8%aa%d8%b1%d9%88%d9%86%d9%8a%d9%87-%d8%9f/">اقرأ أكثر ..</a>
+                                    </div>
+                                    </div>
+                                </div>
+                        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Previous</span>
+                        </button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Next</span>
+                        </button>
+                    </div>
+                    
+                </div>
+            </div>
+</section><!-- End About Us Section -->
