@@ -1,24 +1,20 @@
 ﻿@model List<ContactUs>
-    <div class="col-10 fa-align-center" style="margin-left: auto; margin-right: auto;" >
-        <table class="table table-dark table-sm">
-            <thead>
-                <tr style="height:50px;padding-top:10px">
-                    <th>Name</th>
-                    <th>Email</th>
-                    <th>Subject</th>
-                    <th>Message</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach (var item in Model)
-                {
-                    <tr style="height:50px;padding-bottom:10px">
-                        <td>@item.Name</td>
-                        <td>@item.Email</td>
-                        <td>@item.Subject</td>
-                        <td>@item.Message</td>
-                    </tr>
-                }
-            </tbody>
-    </table>
+<div class="header" style="margin-top: 12%">
+     <h1 style="text-align:center;border:outset">Masseges</h1>
 </div>
+<div class="card-deck col-3 container" style="width:50%">
+         @foreach (var item in Model)
+         {
+            <div class="card mb-3  " style="margin-left:5%;">
+                <div class="card-body">
+                    <p class="card-title" style="margin-left:3%"><i class="fa fa-user" style="font-size:20px;"></i>   @item.Name</p>
+                     <ul class="list-group">
+                        <li class="list-group-item list-group-item-success"><i class="bi bi-envelope-open" style="font-size:20px;"></i>   Email : @item.Email</li>
+                        <li class="list-group-item list-group-item-success"><i class="bi bi-calendar2-event" style="font-size:20px;"></i>   Subject : @item.Subject</li>
+                        <li class="list-group-item list-group-item-success"><i class="bi bi-chat-right-text" style="font-size:20px;"></i>   Message : @item.Message</li>
+                     </ul>
+                </div>
+            </div>
+         }
+</div>
+
